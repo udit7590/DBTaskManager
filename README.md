@@ -1,7 +1,7 @@
 # README
 
 ### Rails Initialized
-* `rails new -T -C -P --skip-turbolinks --skip-webpack-install DBTaskManager`
+* `rails new -T -C -P --skip-turbolinks DBTaskManager`
 
 ### Configure
 * `rails db:create`

@@ -1,0 +1,38 @@
+/* https://www.colorcombos.com/color-schemes/239/ColorCombo239.html */
+:root {
+  --light-gray: #f5f5f5;
+  --dark-blue: #2956B2;
+  --blue: #659CEF;
+  --green: #7DBD00;
+  --orange: #FF5B00;
+  --red: #AA0114;
+  --yellow: #FEB729;
+  --white: #FFFFFF;
+  --black: #000000;
+  --indigo: #6610f2;
+
+  --info: #2956B2;
+  --warning: #FEB729;
+  --success: #7DBD00;
+  --danger: #AA0114;
+}
+
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: bold;
+}
+
+p,a,label {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.padding-10 {
+  padding: 10px;
+}
