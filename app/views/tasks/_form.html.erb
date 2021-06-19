@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :status %>
-    <%= form.text_field :status %>
+    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options) %>
   </div>
 
   <div class="actions">

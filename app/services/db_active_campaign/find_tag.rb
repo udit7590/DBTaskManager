@@ -9,8 +9,8 @@ module DbActiveCampaign
 
     def call
       response = service.client.show_tags(search: tag_name)
-      if response[1].present?
-        response[1].first
+      if response[:tags].present?
+        response[:tags].first
       end
     end
   end

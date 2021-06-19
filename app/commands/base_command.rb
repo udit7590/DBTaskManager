@@ -1,16 +1,16 @@
 class BaseCommand
   attr_accessor :response, :model, :options
 
-  def self.call(*args)
-    @options = args.delete(:options) || {}
+  def self.call(*args, **params)
+    @options = params.delete(:options) || {}
 
     if @options[:skip_validation].present?
-      object = self.new(*args).run
+      object = self.new(*args, **params).run
     else
-      object = self.new(*args)
+      object = self.new(*args, **params)
       object.valid? && object.run
     end
-    response
+    self
   end
 
   def response

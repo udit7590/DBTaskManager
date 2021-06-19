@@ -1,14 +1,15 @@
 module Tasks
-  class Create < BaseCommand
-    attr_accessor :user
+  class Update < BaseCommand
+    attr_accessor :user, :params
 
-    def initialize(task, user:)
+    def initialize(task, params:, user:)
       @model  = task
       @user   = user
+      @params = params
     end
 
     def run
-      if @model.save
+      if @model.update(params)
         create_contact_tag
         success!
       else

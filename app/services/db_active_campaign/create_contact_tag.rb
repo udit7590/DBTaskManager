@@ -1,21 +1,17 @@
 module DbActiveCampaign
   class CreateContactTag < BaseService
-    attr_accessor :service, :contact_id
+    attr_accessor :service, :contact_id. :tag_id
 
     def initialize(service, params={})
       @service    = service
-      @email      = params[:email]
-      @first_name = params[:first_name]
-      @last_name  = params[:last_name]
-      @phone      = params[:phone]
+      @contact_id = params[:contact_id]
+      @tag_id     = params[:tag_id].presence || ActiveCampaignService.get_first_tag_id
     end
 
     def call
-      service.client.create_contact(
-        email: email,
-        first_name: first_name,
-        last_name: last_name,
-        phone: phone 
+      service.client.create_contact_tag(
+        contact: contact_id,
+        tag_id: tag_id
       )
     end
   end

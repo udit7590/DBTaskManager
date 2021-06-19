@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks.all.page(params[:page]).order(created_at: :desc)
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -12,7 +12,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
-    @task = Task.new
+    @task = current_user.tasks.build
   end
 
   # GET /tasks/1/edit
@@ -21,10 +21,12 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
+    command = Tasks::Create(@task, user: current_user)
 
     respond_to do |format|
-      if @task.save
+      if command.success?
+        # TODO: Move messages to en.yml and use I18n
         format.html { redirect_to @task, notice: "Task was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,8 +36,9 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
+    command = Tasks::Update(@task, params: task_params, user: current_user)
     respond_to do |format|
-      if @task.update(task_params)
+      if command.success?
         format.html { redirect_to @task, notice: "Task was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +57,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      @task = current_user.tasks.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

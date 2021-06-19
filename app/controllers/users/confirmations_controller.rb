@@ -15,7 +15,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
     super do |resource|
-      response = Users::Onboard.call(resource)
+      Users::Onboard.call(resource)
     end
   end
 

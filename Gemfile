@@ -24,6 +24,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'slim'
 gem 'devise'
+gem 'kaminari'
 
 # https://developers.activecampaign.com/page/sdks
 # ALT: https://github.com/rtcreativegroup/active_campaign_rb
