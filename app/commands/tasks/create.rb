@@ -1,10 +1,8 @@
 module Tasks
   class Create < BaseCommand
-    attr_accessor :current_position
 
-    def initialize(robot, *)
-      @model            = robot
-      @current_position = model.current_position
+    def initialize(task, *)
+      @model            = task
     end
 
     def run

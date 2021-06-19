@@ -10,7 +10,7 @@ class BaseCommand
       object = self.new(*args)
       object.valid? && object.run
     end
-    object
+    response
   end
 
   def response
@@ -31,6 +31,13 @@ class BaseCommand
 
   def fail!
     response[:success] = false
+  end
+
+  def error!(message=nil, error_body: {})
+    errors[:error] = {}
+    errors[:error][:message]  = message
+    errors[:error][:body]     = error_body
+    fail!
   end
 
   def errors

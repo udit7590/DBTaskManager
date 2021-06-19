@@ -15,10 +15,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   # GET /resource/confirmation?confirmation_token=abcdef
   def show
     super do |resource|
-      # TODO: This can be moved to a background worker
-      response = ActiveCampaignService.call('SyncContact', email: resource.email)
-      debugger
-      resource.update_column(:active_campaign_contact_id, response.try(:id))
+      response = Users::Onboard.call(resource)
     end
   end
 
