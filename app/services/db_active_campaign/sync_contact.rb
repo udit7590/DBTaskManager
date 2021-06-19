@@ -1,5 +1,5 @@
 module DbActiveCampaign
-  class CreateContact < BaseService
+  class SyncContact < BaseService
     attr_accessor :service, :email, :first_name, :last_name, :phone
 
     def initialize(service, params={})
@@ -11,7 +11,7 @@ module DbActiveCampaign
     end
 
     def call
-      service.client.create_contact(
+      service.client.sync_contact(
         email: email,
         first_name: first_name,
         last_name: last_name,

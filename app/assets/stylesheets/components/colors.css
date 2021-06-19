@@ -1,3 +1,11 @@
 .bg-gray {
   background-color: var(--light-gray);
 }
+
+.white {
+  color: white;
+}
+
+.red {
+  color: var(--red);
+}

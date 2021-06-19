@@ -5,3 +5,13 @@
 .clear {
   clear: both;
 }
+
+.middle {
+  vertical-align: middle;
+}
+
+.container-center {
+  margin-left: auto;
+  margin-right: auto;
+  width: 15em;
+}

@@ -16,17 +16,11 @@
   <body>
     <div class="top-header">
       <h1 class="title"><i class="bi bi-list-task ilarge middle"></i> DB Task Manager</h1>
-      <% unless current_user.present? %>
-        <span class="right mgn-right-10">
-          <%= link_to destroy_user_session_path, method: :delete, class: 'middle' do %>
-            <i class="bi bi-box-arrow-left red imedium"></i>
-            <span class="logout-text red mgn-left-5">Logout</span>
-          <% end %>
-        </span>
-      <% end %>
     </div>
     <div class="container bg-gray padding-10">
-      <%= yield %>
+      <div class="container-center">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

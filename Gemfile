@@ -27,7 +27,8 @@ gem 'devise'
 
 # https://developers.activecampaign.com/page/sdks
 # ALT: https://github.com/rtcreativegroup/active_campaign_rb
-gem 'active_campaign'
+# IMP: Using the `master` branch as the repository does not have any updated tag.
+gem 'active_campaign', github: 'mhenrixon/active_campaign', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
