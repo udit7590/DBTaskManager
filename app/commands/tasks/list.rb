@@ -1,29 +1,36 @@
 module Tasks
-  class Create < BaseCommand
-    attr_accessor :user, :params
+  class List < BaseCommand
+    attr_accessor :user, :params, :filters
 
-    def initialize(task, params:, filters:, user:)
-      @model  = task
-      @user   = user
-      @params = params
+    # Filters Eg. ?filters[status]=Task::Status::Open&filters[title]=Abc&filters[created_at][beg]=20-06-2021&filters[created_at][end]=21-06-2021
+    def initialize(params:, user:)
+      @user     = user
+      @params   = params
+      @filters  = params[:filters]
+      @model    = user.tasks #.page(params[:page])
     end
 
     def run
-      if @model.update(params)
-        create_contact_tag
-        success!
-      else
-        fail!
-      end
+      filter_records
+      success!
     end
 
     private
 
-    def create_contact_tag
-      return if user.contact_tag_id.present?
+    def filter_records
+      if params[:status].present?
+        @model = @model.filter_by_status(params[:status])
+      end
 
-      response = ActiveCampaignService.call('CreateContactTag', contact_id: user.contact_id)
-      user.update_column(:contact_tag_id, response[:contactTag] && response[:contactTag][:id])
+      if params[:title].present?
+        @model = @model.filter_by_title(params[:title])
+      end
+
+      if params[:created_at_start].present?
+        start_date  = Date.strptime(params[:created_at_start], "%m-%d-%Y")
+        end_date    = Date.strptime((params[:created_at_end].presence || params[:created_at_start]), "%m-%d-%Y")
+        @model      = @model.filter_by_created_at(start_date, end_date)
+      end
     end
   end
 end

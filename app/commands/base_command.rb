@@ -1,5 +1,5 @@
 class BaseCommand
-  attr_accessor :response, :model, :options
+  attr_accessor :response, :model, :options, :context
 
   def self.call(*args, **params)
     @options = params.delete(:options) || {}
