@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     new_user_session_path
   end
+
+  def after_confirmation_path_for(resource_name, resource)
+    tasks_path
+  end
 end
