@@ -10,7 +10,7 @@ class BaseCommand
       object = self.new(*args, **params)
       object.valid? && object.run
     end
-    self
+    object
   end
 
   def response
@@ -34,14 +34,19 @@ class BaseCommand
   end
 
   def error!(message=nil, error_body: {})
-    errors[:error] = {}
-    errors[:error][:message]  = message
-    errors[:error][:body]     = error_body
+    errors[:error] = {
+      message: message,
+      body: error_body
+    }
     fail!
   end
 
   def errors
-    response[:errors] ||= {}
+    response[:errors] ||= {}.with_indifferent_access
+  end
+
+  def errored?
+    response[:errors].present?
   end
 
   def context
@@ -49,10 +54,9 @@ class BaseCommand
   end
 
   def valid?
-    response[:errors] = {}
-
     unless model.valid?
-      errors.merge!(model.errors.to_h)
+      key = model.class.name.underscore
+      errors[key] = model.errors.to_hash
     end
 
     yield if block_given?

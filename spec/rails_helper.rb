@@ -65,4 +65,6 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.shared_context_metadata_behavior = :apply_to_host_groups
 end

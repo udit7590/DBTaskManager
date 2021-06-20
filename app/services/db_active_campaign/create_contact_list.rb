@@ -1,6 +1,6 @@
 module DbActiveCampaign
   class CreateContactList < BaseService
-    attr_accessor :service, :contact_id. :list_id, :status
+    attr_accessor :service, :contact_id, :list_id, :status
 
     def initialize(service, params={})
       @service      = service

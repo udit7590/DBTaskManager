@@ -23,7 +23,31 @@ module ActiveCampaignHelpers
     allow(ActiveCampaignService).to receive(:call).with('CreateList').and_return({ list: { id: "2" } }) if id.nil?
   end
 
-  def stub_active_campaign_operation_response(client, operation_method, response: {})
-    allow(client).to receive(operation_method).and_return(response)
+  def stub_active_campaign_operation_response(client, operation_method, response: {}, params: {})
+    if params.present?
+      allow(client).to receive(operation_method).with(hash_including(params)).and_return(response)
+    else
+      allow(client).to receive(operation_method).and_return(response)
+    end
+  end
+end
+
+RSpec.shared_context "active_campaign_operation_stubs", shared_context: :metadata do |operation_name, operation_method|
+  include ActiveCampaignHelpers
+  let(:client)      { ActiveCampaign::Client.new }
+
+  before do
+    stub_active_campaign_operation_response(
+      client,
+      'show_list',
+      response: { list: { id: "1" } }
+    )
+    stub_active_campaign_client(client)
+    stub_active_campaign_operation_response(
+      client,
+      operation_method,
+      response: send(:try, "#{operation_method}_response"),
+      params: send(:try, "#{operation_method}_params")
+    )
   end
 end
