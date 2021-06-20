@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Tasks::List(params: params, user: current_user).model
+    @tasks = Tasks::List.call(params: params, user: current_user).model
     @tasks = @tasks.page(params[:page]).order(created_at: :desc)
   end
 
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
   # POST /tasks or /tasks.json
   def create
     @task   = current_user.tasks.build(task_params)
-    command = Tasks::Create(@task)
+    command = Tasks::Create.call(@task)
 
     respond_to do |format|
       if command.success?
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    command = Tasks::Update(@task, params: task_params)
+    command = Tasks::Update.call(@task, params: task_params)
     respond_to do |format|
       if command.success?
         format.html { redirect_to @task, notice: "Task was successfully updated." }

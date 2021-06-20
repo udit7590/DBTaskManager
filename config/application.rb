@@ -35,5 +35,8 @@ module DBTaskManager
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.autoload_paths << Rails.root.join('app', 'commands')
+    config.autoload_paths << Rails.root.join('app', 'services')
   end
 end
