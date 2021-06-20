@@ -20,7 +20,6 @@ class ActiveCampaignService < BaseService
   end
 
   def call
-    client
     operation.call(self, params)
   end
 
