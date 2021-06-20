@@ -42,6 +42,11 @@ RSpec.shared_context "active_campaign_operation_stubs", shared_context: :metadat
       'show_list',
       response: { list: { id: "1" } }
     )
+    stub_active_campaign_operation_response(
+      client,
+      'show_tags',
+      response: { tags: [{ id: "1" }] }
+    )
     stub_active_campaign_client(client)
     stub_active_campaign_operation_response(
       client,

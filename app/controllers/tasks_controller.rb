@@ -22,8 +22,8 @@ class TasksController < ApplicationController
 
   # POST /tasks or /tasks.json
   def create
-    @task = current_user.tasks.build(task_params)
-    command = Tasks::Create(@task, user: current_user)
+    @task   = current_user.tasks.build(task_params)
+    command = Tasks::Create(@task)
 
     respond_to do |format|
       if command.success?
@@ -37,7 +37,7 @@ class TasksController < ApplicationController
 
   # PATCH/PUT /tasks/1 or /tasks/1.json
   def update
-    command = Tasks::Update(@task, params: task_params, user: current_user)
+    command = Tasks::Update(@task, params: task_params)
     respond_to do |format|
       if command.success?
         format.html { redirect_to @task, notice: "Task was successfully updated." }

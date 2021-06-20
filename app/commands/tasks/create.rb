@@ -2,9 +2,9 @@ module Tasks
   class Create < BaseCommand
     attr_accessor :user
 
-    def initialize(task, user:)
+    def initialize(task, **)
       @model  = task
-      @user   = user
+      @user   = task.user
     end
 
     def run
@@ -21,7 +21,7 @@ module Tasks
     def create_contact_tag
       return if user.contact_tag_id.present?
 
-      response = ActiveCampaignService.call('CreateContactTag', contact_id: user.contact_id)
+      response = ActiveCampaignService.call('CreateContactTag', contact_id: user.active_campaign_contact_id)
       user.update_column(:contact_tag_id, response[:contactTag] && response[:contactTag][:id])
     end
   end

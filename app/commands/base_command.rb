@@ -54,7 +54,7 @@ class BaseCommand
   end
 
   def valid?
-    unless model.valid?
+    if model.respond_to?(:valid?) && !model.valid?
       key = model.class.name.underscore
       errors[key] = model.errors.to_hash
     end

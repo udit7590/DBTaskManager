@@ -1,13 +1,12 @@
 module Tasks
   class List < BaseCommand
-    attr_accessor :user, :params, :filters
+    attr_accessor :user, :params
 
     # Filters Eg. ?filters[status]=Task::Status::Open&filters[title]=Abc&filters[created_at][beg]=20-06-2021&filters[created_at][end]=21-06-2021
     def initialize(params:, user:)
       @user     = user
       @params   = params
-      @filters  = params[:filters]
-      @model    = user.tasks #.page(params[:page])
+      @model    = user.tasks
     end
 
     def run
