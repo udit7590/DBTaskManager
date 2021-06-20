@@ -3,7 +3,7 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Tasks::List.call(params: params, user: current_user).model
+    @tasks = Tasks::List.call(params: task_search_params, user: current_user).model
     @tasks = @tasks.page(params[:page]).order(created_at: :desc)
   end
 
@@ -64,5 +64,9 @@ class TasksController < ApplicationController
     # Only allow a list of trusted parameters through.
     def task_params
       params.require(:task).permit(:title, :status)
+    end
+
+    def task_search_params
+      params.require(:task).permit(:title, :status, :created_at_start, :created_at_end)
     end
 end

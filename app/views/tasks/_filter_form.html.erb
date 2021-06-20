@@ -1,0 +1,17 @@
+<%= form_for(:task, url: tasks_path, method: :get) do |form| %>
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, value: params.dig('task', 'text') %>
+
+    <%= form.label :status %>
+    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options, selected: params.dig('task', 'status')) %>
+
+    <%= form.label :created_at_start %>
+    <%= form.text_field :created_at_start, data: { provide: 'datepicker' }, class: 'datepicker' %>
+    <%= form.label :created_at_end %>
+    <%= form.date_select :created_at_end, start_year: Date.current.year, end_year: 2010, default: params.dig('task', 'created_at_end') %>
+
+    <%= form.submit 'Search' %>
+  </div>
+
+<% end %>

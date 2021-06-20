@@ -13,3 +13,8 @@ require("@rails/activestorage").start()
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+var elem = document.querySelector('.datepicker');
+var datepicker = new Datepicker(elem, {
+  // ...options
+}); 

@@ -19,6 +19,8 @@ class Task < ApplicationRecord
     end
   end
 
+  attr_accessor :created_at_start, :created_at_end
+
   belongs_to :user
 
   validates_inclusion_of :status, in: %w(Task::Status::Open Task::Status::Close Task::Status::Wip)
