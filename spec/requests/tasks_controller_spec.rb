@@ -2,8 +2,9 @@ require "rails_helper"
 
 RSpec.describe TasksController, type: :request do
 
-  describe 'Task Create' do
+  describe 'Task Create/Update/Show' do
     let!(:user) { create(:user, :confirmed, contact_tag_id: '101') }
+    let!(:random_task) { create(:task, title: 'Random task') }
     before do
       sign_in user
     end
@@ -27,11 +28,13 @@ RSpec.describe TasksController, type: :request do
       follow_redirect!
       expect(response).to be_successful
       expect(response.body).to include("Task was successfully updated.")
+
+      get "/tasks"
+      expect(response).to be_successful
+      expect(response.body).to include("Tasks")
+      expect(response.body).to include("My first task")
+      expect(response.body).to_not include("Random task")
+      expect(response).to have_http_status(200)
     end
   end
-
-  # it "does not render a different template" do
-  #   get "/tasks/new"
-  #   expect(response).to_not render_template(:show)
-  # end
 end

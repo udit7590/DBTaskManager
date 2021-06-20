@@ -38,7 +38,9 @@ module Filterable
       ranged_params   = params.slice(*registered_filters_params[:range])
       filtered_params.each do |filter, value|
         case filter.to_s
-        filtered_records.send("filter_by_#{filter}", value)
+        else
+          filtered_records.send("filter_by_#{filter}", value)
+        end
       end
     end
   end
