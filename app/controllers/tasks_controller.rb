@@ -67,6 +67,10 @@ class TasksController < ApplicationController
     end
 
     def task_search_params
-      params.require(:task).permit(:title, :status, :created_at_start, :created_at_end)
+      if params[:task].present?
+        params.require(:task).permit(:title, :status, :created_at_start, :created_at_end)
+      else
+        {}
+      end
     end
 end
