@@ -1,0 +1,38 @@
+.badge {
+  position: absolute;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: var(--primary);
+  color: var(--white);
+  margin-left: 25px;
+  margin-right: 10px;
+}
+
+.badge-square {
+  border-radius: 5px;
+}
+
+.badge-red {
+  background-color: var(--red);
+  color: var(--white);
+}
+
+.badge-blue {
+  background-color: var(--dark-blue);
+  color: var(--white);
+}
+
+.badge-yellow {
+  background-color: var(--yellow);
+  color: var(--white);
+}
+
+.badge-green {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.badge-orange {
+  background-color: var(--orange);
+  color: var(--white);
+}

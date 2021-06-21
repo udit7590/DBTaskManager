@@ -20,7 +20,7 @@ RSpec.describe Tasks::Create, type: :command do
     context 'when tag not created' do
       include_context "active_campaign_operation_stubs", 'CreateContactTag', 'create_contact_tag' do
         let(:create_contact_tag_params)    { { contact: '199' } }
-        let(:create_contact_tag_response)  { { contactTag: { id: '101' } } }
+        let(:create_contact_tag_response)  { { contact_tag: { id: '101' } } }
       end
 
       it 'returns success' do

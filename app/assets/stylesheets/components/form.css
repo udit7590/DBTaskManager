@@ -49,3 +49,10 @@
   background-color: var(--white);
   width: calc(100% - 7.5em);
 }
+
+.field_with_errors {
+  display: inline;
+}
+.field_with_errors input, .field_with_errors select {
+  border: 1px solid var(--red);
+}

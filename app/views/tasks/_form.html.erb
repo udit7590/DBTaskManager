@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :status, class: 'input-label' %>
-    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options), {}, class: 'input-select' %>
+    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options, selected: form.object.status), {}, class: 'input-select' %>
   </div>
 
   <div class="actions center-items">

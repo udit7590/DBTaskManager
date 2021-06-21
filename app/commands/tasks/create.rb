@@ -22,7 +22,7 @@ module Tasks
       return if user.contact_tag_id.present?
 
       response = ActiveCampaignService.call('CreateContactTag', contact_id: user.active_campaign_contact_id)
-      user.update_column(:contact_tag_id, response[:contactTag] && response[:contactTag][:id])
+      user.update_column(:contact_tag_id, response[:contact_tag] && response[:contact_tag][:id])
     end
   end
 end

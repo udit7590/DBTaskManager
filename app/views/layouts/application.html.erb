@@ -20,6 +20,15 @@
   <body class="bg-gray">
     <div class="top-header">
       <h1 class="title"><i class="bi bi-list-task ilarge middle"></i> DB Task Manager</h1>
+
+      <% if current_user.active_campaign_contact_id.present? %>
+        <span class="badge badge-blue" title="Active Campaign Contact ID"><%= current_user.active_campaign_contact_id  %></span>
+      <% end %>
+
+      <% if current_user.contact_tag_id.present? %>
+        <span class="badge badge-green badge-square">First Task Created</span>
+      <% end %>
+
       <% if current_user.present? %>
         <span class="right mgn-right-50">
           <%= link_to destroy_user_session_path, method: :delete, class: 'middle' do %>

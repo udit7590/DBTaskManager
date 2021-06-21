@@ -23,9 +23,18 @@ class Task < ApplicationRecord
 
   belongs_to :user
 
+  validates_presence_of :title
   validates_inclusion_of :status, in: %w(Task::Status::Open Task::Status::Close Task::Status::Wip)
 
   scope :filter_by_title, -> (title) { where("lower(title) = ?", title.downcase) }
   scope :filter_by_status, -> (status) { where(status: status) }
   scope :filter_by_created_at, -> (_beg, _end) { where(created_at: (_beg.beginning_of_day)..(_end.end_of_day)) }
+
+  before_validation :preprocess_fields
+
+  private
+
+  def preprocess_fields
+    self.title = self.title.presence&.squish
+  end
 end

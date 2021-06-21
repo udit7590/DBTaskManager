@@ -11,7 +11,7 @@ module DbActiveCampaign
     def call
       service.client.create_contact_tag(
         contact: contact_id,
-        tag_id: tag_id
+        tag: tag_id
       )
     end
   end
