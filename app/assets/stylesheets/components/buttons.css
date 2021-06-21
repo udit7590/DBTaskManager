@@ -1,4 +1,22 @@
-.db-btn-primary {
-
+.db-btn {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid var(--light-gray);
+  color: var(--white);
 }
 
+.db-btn-medium {
+  padding: 10px;
+}
+
+.db-btn-large {
+  padding: 15px;
+}
+
+.db-btn-primary {
+  background-color: var(--blue);
+}
+
+.db-btn-fullwidth {
+  width: 100%;
+}

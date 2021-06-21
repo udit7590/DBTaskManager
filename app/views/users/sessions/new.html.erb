@@ -1,25 +1,28 @@
-<h2>Log in</h2>
+<div class="center-items">
+  <h1 class="devise-title"><i class="bi bi-list-task ilarge middle"></i> DB Task Manager</h1>
+  <h2 class="devise-heading">Log in</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.label :email, class: 'input-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-text', placeholder: 'Your email address' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.label :password, class: 'input-label' %>
+    <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Your password', class: 'input-text' %>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.check_box :remember_me, class: 'input-checkbox' %>
+      <%= f.label :remember_me, class: 'input-label-checkbox' %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="actions center-items">
+    <%= f.submit "Log in", class: 'db-btn db-btn-primary db-btn-fullwidth db-btn-large' %>
   </div>
 <% end %>
 

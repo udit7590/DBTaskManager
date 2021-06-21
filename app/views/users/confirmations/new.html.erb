@@ -1,15 +1,18 @@
-<h2>Resend confirmation instructions</h2>
+<div class="center-items">
+  <h1 class="devise-title"><i class="bi bi-list-task ilarge middle"></i> DB Task Manager</h1>
+  <h2 class="devise-heading">Resend confirmation instructions</h2>
+</div>
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "users/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    <%= f.label :email, class: 'input-label' %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email to receive confirmation link', class: 'input-text', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+    <%= f.submit "Resend confirmation instructions", class: 'db-btn db-btn-primary db-btn-fullwidth db-btn-large' %>
   </div>
 <% end %>
 

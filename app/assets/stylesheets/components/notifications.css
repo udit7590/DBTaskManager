@@ -1,0 +1,17 @@
+.error-notification-container {
+  background-color: var(--red);
+  opacity: 0.75;
+  padding: 1px 15px;
+  border-radius: 5px;
+  border: 2px solid var(--dark-red);
+  color: var(--white);
+}
+
+.error-notification-heading {
+  font-size: 1.1em;
+}
+
+.error-notification-text {
+  font-size: 0.85em;
+  margin-left: -1em;
+}

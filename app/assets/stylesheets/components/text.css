@@ -1,0 +1,18 @@
+
+/*Section For Devise Related Typography*/
+.devise-title {
+  font-size: 2.5em;
+  color: var(--dark-blue);
+  border-bottom: 2px solid var(--lighter-gray);
+}
+.devise-heading {
+  font-size: 1.5em;
+  color: var(--dark-gray);
+}
+.devise-link {
+  color: var(--blue);
+  text-decoration: none;
+}
+.devise-link:hover {
+  text-decoration: underline;
+}

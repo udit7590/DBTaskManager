@@ -1,0 +1,42 @@
+.field {
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.input-label {
+  width: 5em;
+  display:inline-block;
+}
+
+.input-label-full {
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+}
+
+.input-label-checkbox {
+  width: 5em;
+}
+
+.input-text {
+  color: var(--black);
+  padding: 15px;
+  width: 21em;
+  border: 1px solid var(--dark-gray);
+  box-shadow: 0 0 0px 0px var(--light-gray);
+  border-radius:5px;
+  background-color: var(--white);
+}
+
+.input-text-full {
+  margin: 0;
+  width: 91.5%;
+}
+
+.input-text::placeholder {
+  color: var(--gray);
+}
+
+.input-checkbox {
+  padding: 5px;
+}
