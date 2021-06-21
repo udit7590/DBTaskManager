@@ -1,11 +1,10 @@
 .badge {
-  position: absolute;
+  position: relative;
   padding: 5px 10px;
   border-radius: 50%;
   background-color: var(--primary);
   color: var(--white);
-  margin-left: 25px;
-  margin-right: 10px;
+  margin-left: 15px;
 }
 
 .badge-square {
