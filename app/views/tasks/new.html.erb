@@ -1,5 +1,8 @@
-<h1>New Task</h1>
+<h1 class="page-heading">New Task</h1>
 
 <%= render 'form', task: @task %>
 
-<%= link_to 'Back', tasks_path %>
+<div class="center-items">
+  <%= link_to 'Back', tasks_path, class: 'page-link' %>
+</div>
+

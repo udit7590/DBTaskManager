@@ -38,3 +38,7 @@ body, p, ol, ul, td, input, select, textarea, button, label {
 .padding-10 {
   padding: 10px;
 }
+
+a:-webkit-any-link {
+  text-decoration: none !important;
+}

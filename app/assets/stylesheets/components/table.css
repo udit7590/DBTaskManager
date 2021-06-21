@@ -1,0 +1,28 @@
+.db-table {
+  background-color: var(--white);
+  border-radius: 5px;
+  border: 2px solid var(--dark-gray);
+  width: 100%;
+  padding: 15px;
+}
+
+.db-table thead {
+  border-bottom: 2px solid var(--dark-gray);
+}
+
+.db-table th, .db-table td {
+  padding: 10px;
+}
+
+.db-table th {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.db-table tr:nth-child(odd) {
+  background-color: var(--light-gray);
+}
+
+.db-table tr:nth-child(even) {
+  background-color: var(--white);
+}

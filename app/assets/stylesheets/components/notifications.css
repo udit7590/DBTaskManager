@@ -15,3 +15,40 @@
   font-size: 0.85em;
   margin-left: -1em;
 }
+
+.flash-container {
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 10px;
+}
+
+.flash-container.error {
+  background-color: var(--red);
+}
+
+.flash-container.info {
+  background-color: var(--blue);
+}
+
+.flash-container.warning {
+  background-color: var(--yellow);
+}
+
+.flash-text {
+  font-size: 0.95em;
+}
+
+.flash-container.error .flash-text {
+  color: var(--white);
+}
+
+.flash-container.info .flash-text {
+  color: var(--white);
+}
+
+.flash-container.warning .flash-text {
+  color: var(--black);
+}

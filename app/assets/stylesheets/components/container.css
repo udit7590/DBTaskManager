@@ -5,3 +5,7 @@
   text-align: center;
   width: 100%;
 }
+.container-center-large {
+  width: 50%;
+  margin: auto;
+}

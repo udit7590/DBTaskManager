@@ -1,27 +1,31 @@
 <%= form_with(model: task, local: true) do |form| %>
   <% if task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+    <div id="error_explanation" class="error-notification-container">
+      <h2 class="error-notification-heading"><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
         <% task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <li class="error-notification-text"><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: 'input-label' %>
+    <%= form.text_field :title, class: 'input-text', placeholder: 'Enter title task' %>
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options) %>
+    <%= form.label :status, class: 'input-label' %>
+    <%= form.select :status, options_for_select([["Select Status", ""]] + status_options), {}, class: 'input-select' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions center-items">
+    <% if form.object.persisted? %>
+      <%= form.submit "Edit Task", class: 'db-btn db-btn-success db-btn-wide db-btn-large' %>
+    <% else %>
+      <%= form.submit "Create Task", class: 'db-btn db-btn-success db-btn-wide db-btn-large' %>
+    <% end %>
   </div>
 <% end %>

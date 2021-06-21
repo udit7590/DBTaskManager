@@ -17,6 +17,18 @@
   background-color: var(--blue);
 }
 
+.db-btn-success {
+  background-color: var(--green);
+}
+
+.db-btn-error {
+  background-color: var(--dark-red);
+}
+
+.db-btn-wide {
+  width: 20em;
+}
+
 .db-btn-fullwidth {
   width: 100%;
 }

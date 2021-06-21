@@ -1,0 +1,10 @@
+<% if respond_to?(:notice) && notice.present? %>
+  <div class="flash-container info">
+    <p class="flash-text" id="notice"><%= notice %></p>
+  </div>
+<% end %>
+<% if respond_to?(:error) && error.present? %>
+  <div class="flash-container error">
+    <p class="flash-text" id="error"><%= error %></p>
+  </div>
+<% end %>

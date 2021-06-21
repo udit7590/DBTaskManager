@@ -17,20 +17,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.4/dist/js/datepicker-full.min.js"></script>
   </head>
 
-  <body>
+  <body class="bg-gray">
     <div class="top-header">
       <h1 class="title"><i class="bi bi-list-task ilarge middle"></i> DB Task Manager</h1>
       <% if current_user.present? %>
-        <span class="right mgn-right-10">
+        <span class="right mgn-right-50">
           <%= link_to destroy_user_session_path, method: :delete, class: 'middle' do %>
-            <i class="bi bi-box-arrow-left red imedium"></i>
+            <i class="bi bi-box-arrow-left red ilarge"></i>
             <span class="logout-text red mgn-left-5">Logout</span>
           <% end %>
         </span>
       <% end %>
     </div>
-    <div class="container bg-gray padding-10">
-      <%= yield %>
+    <div class="bg-gray padding-10">
+      <div class="container-center-large">
+        <%= yield %>
+      </div>
     </div>
   </body>
 </html>

@@ -1,3 +1,11 @@
+.page-heading {
+  font-size: 2em;
+  color: var(--dark-blue);
+}
+.secondary-heading {
+  font-size: 1.4em;
+  color: var(--blue);
+}
 
 /*Section For Devise Related Typography*/
 .devise-title {
@@ -9,10 +17,10 @@
   font-size: 1.5em;
   color: var(--dark-gray);
 }
-.devise-link {
+.devise-link, .page-link {
   color: var(--blue);
   text-decoration: none;
 }
-.devise-link:hover {
+.devise-link:hover, .page-link:hover {
   text-decoration: underline;
 }
